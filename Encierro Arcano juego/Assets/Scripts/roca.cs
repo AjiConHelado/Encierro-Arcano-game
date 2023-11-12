@@ -13,11 +13,13 @@ public class roca : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("roca");
         // Check if the colliding GameObject is the targetGameObject
         if (collision.gameObject == targetGameObject)
         {
             // Trigger the Unity event
             onCollisionWithTargetEvent.Invoke();
+            Debug.Log("rocacorrecta");
         }
     }
 }
