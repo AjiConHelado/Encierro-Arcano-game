@@ -6,7 +6,8 @@ public class cauldronpuzzle : MonoBehaviour
 {
     public string targetTag = "YourTargetTag"; // Set this to the tag you want to verify
     [SerializeField] GameObject pocion;
-    
+    [SerializeField] GameObject efectos;
+
     private int collidersInsideTrigger = 0;
     void start()
     {
@@ -36,5 +37,6 @@ public class cauldronpuzzle : MonoBehaviour
     public void spawnpotion()
     {
         pocion.SetActive(true);
+        efectos.SetActive(true);
     }
 }

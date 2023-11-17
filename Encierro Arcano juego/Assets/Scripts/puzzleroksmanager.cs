@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class puzzleroksmanager : MonoBehaviour
 {
-    int count=0;
+    int count = 0;
     public List<GameObject> activate = new List<GameObject>();
 
 
     public void solvedCounter()
     {
         count++;
-        if(count==3)
+        Debug.Log("rocapunto" + count);
+        if (count == 4)
         {
             abrirPuerta();
         }
+    }
+    public void unsolvedCounter()
+    {
+        count--;
+        Debug.Log("rocanopunto" + count);
+
     }
 
 

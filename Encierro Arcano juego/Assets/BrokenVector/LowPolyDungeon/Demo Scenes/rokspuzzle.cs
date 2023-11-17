@@ -4,44 +4,37 @@ using UnityEngine;
 
 public class rokspuzzle : MonoBehaviour
 {
-    public string targetTag = "YourTargetTag"; // Set this to the tag you want to verify
+    public string targetTag = "puzzlerocks"; // Set this to the tag you want to verify
     [SerializeField] GameObject puerta;
-    [SerializeField] GameObject roks;
-    private int collidersInsideTrigger = 0;
-    void start()
-    {
-        Debug.Log(collidersInsideTrigger);
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag(targetTag)) // Check if the collider has the specified tag
-        {
-            collidersInsideTrigger--;
 
-            if (collidersInsideTrigger == 0)
+
+
+    public List<GameObject> gameObjectsList;
+
+    void Update()
+    {
+        bool allInactive = true;
+
+        foreach (GameObject obj in gameObjectsList)
+        {
+            if (obj.activeSelf)
             {
-                OnAllCollidersExited();
+                allInactive = false;
+                break;
             }
         }
-    }
 
-    private void OnAllCollidersExited()
-    {
-        Debug.Log("All colliders with tag " + targetTag + " have exited the trigger!");
-        opendoor();
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag(targetTag))
+        if (allInactive)
         {
-            collidersInsideTrigger++;
+            // Call your method or perform actions when all GameObjects are inactive
+            opendoor();
         }
     }
+
+   
 public void opendoor()
     {
         puerta.SetActive(false);
-        roks.SetActive(false);
+       
     }
 }
-

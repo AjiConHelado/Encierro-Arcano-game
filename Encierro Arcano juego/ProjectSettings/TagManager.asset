@@ -11,6 +11,7 @@ TagManager:
   - puzzlescroll1
   - Hand
   - Cupula
+  - Pocion
   layers:
   - Default
   - TransparentFX

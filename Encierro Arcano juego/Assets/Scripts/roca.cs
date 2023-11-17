@@ -10,18 +10,31 @@ public class roca : MonoBehaviour
 
     // Unity event to be triggered on collision with the target GameObject
     public UnityEvent onCollisionWithTargetEvent;
+    public UnityEvent onExitTargetEvent;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         Debug.Log("roca");
-        // Check if the colliding GameObject is the targetGameObject
-        if (collision.gameObject == targetGameObject)
+        if (other.gameObject == targetGameObject)
         {
-            // Trigger the Unity event
             onCollisionWithTargetEvent.Invoke();
-            Collider manuel = targetGameObject.GetComponent<Collider>();
-            manuel.enabled = false;
-            Debug.Log("rocacorrecta");
+            Debug.Log("rocacorrecta.");
+            // Realizar acciones cuando el jugador entra en el trigger
+        }
+    }
+
+
+    // Se llama cuando un objeto sale del collider trigger
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("rocasalio");
+        if (other.gameObject == targetGameObject)
+        {
+            onExitTargetEvent.Invoke();
+            Debug.Log("rocacorrectasalio.");
+            Debug.Log("El objeto deseado ha salido del trigger.");
+            // Realizar acciones cuando el objeto deseado sale del trigger
         }
     }
 }
