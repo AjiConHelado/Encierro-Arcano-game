@@ -19,6 +19,8 @@ public class roca : MonoBehaviour
         {
             // Trigger the Unity event
             onCollisionWithTargetEvent.Invoke();
+            Collider manuel = targetGameObject.GetComponent<Collider>();
+            manuel.enabled = false;
             Debug.Log("rocacorrecta");
         }
     }
